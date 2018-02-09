@@ -1,0 +1,45 @@
+﻿
+
+
+<div class="ngdialog-message" ng-controller="poProfileCtrl">
+    <table class="table" style="width:100%;">
+        <tr>
+            <td style="width:33.3%;">
+                Master Name :
+                <select kendo-drop-down-list
+                        k-data-text-field="'Text'"
+                        k-data-value-field="'Value'"
+                        ng-model="vm.formData.MasterID"
+                        k-data-source="vm.MasterItems"
+                        k-on-change="vm.MasterItemsChange()"
+                        style="width:100%;"></select>
+            </td>
+            <td style="width:33.4%;">
+                Project Name :
+                <select kendo-drop-down-list
+                        k-data-text-field="'Text'"
+                        k-data-value-field="'Value'"
+                        ng-model="vm.formData.ProjectID"
+                        k-data-source="vm.ProjectItems"
+                        k-on-change="vm.ProjectItemsChange()"
+                        style="width:100%;"></select>
+            </td>
+            <td style="width:33.3%;">
+                Purchase Order No:<br />
+                <input class="k-textbox" ng-model="vm.formData.PONo" type="text" style="width:100%;" placeholder="PO No here.." />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <kendo-button class="btn-warning" ng-click="vm.SearchPONoClick()">Search</kendo-button>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <form>
+        <div kendo-grid="grid" k-options="vm.POMainGridOptions" id="POKendoGrid">
+        </div>
+    </form>
+</div>

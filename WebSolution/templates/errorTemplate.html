@@ -1,0 +1,7 @@
+﻿<div ng-controller="poValidationCtrl as vm">
+    <label>Error:</label>
+    {{vm.errors}}
+    <ul>
+        <li id="errorMessages" class="ui-state-error-text" ng-repeat="error in vm.errors"> {{error}} </li>
+    </ul>
+</div>

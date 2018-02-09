@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+
+<h4>Purchase Order Detail : </h4>
+<table class="table-bordered" style="width:100%">
+    <tr class=" alert-success">
+        <td style="width:9%;">
+            @Html.Label("Master Name : ")
+        </td>
+        <td style="width:22%;">
+            <input class="k-textbox" type="text" ng-model="vm.formData.MasterOrgSN"  style="width:100%;" disabled/>
+            @*<select kendo-drop-down-list
+                    k-data-text-field="'Text'"
+                    k-data-value-field="'Value'"
+                    id="k-MasterNames"
+                    k-option-label="'Select Master Name..'"
+                    ng-model="formData.MasterID"
+                    style="width:100%" disabled></select>*@
+        </td>
+        <td style="width:10%;">
+            @Html.Label("Project Name : ")
+        </td>
+        <td style="width:23%;">
+            <input class="k-textbox" type="text" ng-model="vm.formData.ProjectName" style="width:100%;" disabled />
+            @*<select kendo-drop-down-list
+            k-data-text-field="'Text'"
+            k-data-value-field="'Value'"
+            id="k-ProjectNames"
+            k-option-label="'Select Master..'"
+            ng-model="formData.ProjectID"
+            style="width:100%;" disabled></select>*@
+        </td>
+        <td style="width:12%;">
+            @Html.Label("Purchase Order No : ")
+        </td>
+        <td style="width:23%;">
+            <input class="k-textbox" style="width:100%" ng-model="vm.formData.PONo" disabled />
+        </td>
+    </tr>
+    <tr class="alert-info">
+        <td>
+            @Html.Label("Supplier Name : ")
+        </td>
+        <td>
+            <input class="k-textbox" type="text" ng-model="vm.formData.SupplierOrgSN" style="width:100%;" disabled />
+            @*<select kendo-drop-down-list
+            k-data-text-field="'Text'"
+            k-data-value-field="'Valeu'"
+            id="k-SupplierNames"
+            k-option-label="'Select Supplier Name..'"
+            ng-model="formData.SupplierID"
+            style="width:100%" disabled></select>*@
+        </td>
+        <td>
+            @Html.Label("Create Date : ")
+        </td>
+        <td>
+            <input kendo-date-picker
+                   ng-model="vm.formData.CreateDate"
+                   k-format="'{0:yyyy-MM-dd}'"
+                   style="width:100%;" disabled />
+        </td>
+        <td>
+            @Html.Label("Update Date : ")
+        </td>
+        <td>
+            <input kendo-date-picker
+                   ng-model="vm.formData.UpdateDate"
+                   k-format="'{0:yyyy-MM-dd}'"
+                   style="width:100%;" disabled />
+        </td>
+    </tr>
+    <tr class="alert-success">
+        <td>@Html.Label("Memo : ")</td>
+        <td><input class="k-textbox text-left" ng-model="vm.formData.Memo" style="width:100%" disabled /></td>
+        <td>
+            @Html.Label("Transaction Date : ")
+        </td>
+        <td>
+            <input kendo-date-picker
+                   ng-model="vm.formData.TranDate"
+                   k-ng-model="vm.formData.TranDate"
+                   k-format="'{0:yyyy-MM-dd}'"
+                   style="width:100%;" disabled />
+
+        </td>
+        <td></td>
+        <td>
+            <a href="#Add" class="k-button btn-danger">New</a>
+            <a href="#Edit" class="k-button btn-primary">Edit</a>
+        </td>
+    </tr>
+</table>

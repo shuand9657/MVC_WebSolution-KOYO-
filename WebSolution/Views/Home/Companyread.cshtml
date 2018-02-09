@@ -1,0 +1,139 @@
+﻿<script src="~/Scripts/Script/TreeView/direct/ngCompanyController.js"></script>
+<script src="~/Scripts/kendo.console.js"></script>
+@model DBModelClass.DBModel.POOrgMasterViewModel
+
+<div ng-controller="tvCompanyProfileCtrl2 as vm">
+    <h3>Add User Profile (razor)</h3>
+    <hr />
+    <div>
+        <pre>{{vm.formData}}</pre>
+        <table>
+            <tr class="alert-success">
+                <td>
+                    @Html.LabelFor(x=>x.MasterList):
+                </td>
+                <td>
+                    @Html.DropDownListFor(x => x.MasterID, Model.MasterList, new
+               {
+                   @class = "kendo-drop-down-list",
+                   @style = "width:100%",
+                   ng_model = "vm.formData.MasterID",
+                   ng_change= "vm.OrgItemsChange(vm.formData.MasterID)",
+               })
+                </td>
+                <td>
+                    <label>Company Show Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.OrgName" />
+                </td>
+                <td>
+                    <label>Create Date :</label>
+                </td>
+                <td>
+                    <input kendo-date-picker class="k-datetimepicker" ng-model="vm.formData.CreateDate" />
+                </td>
+            </tr>
+            <tr class="alert-danger" >
+                <td> 
+                     @Html.LabelFor(x=>x.DepartList)
+                </td>
+                <td>
+                    @Html.DropDownListFor(x => x.DepartID, Model.DepartList,
+                                        new {
+                                            ng_model ="vm.formData.DepartID",
+                                            @class="kendo-drop-down-list",
+                                            @Styles = "width:100%",
+                                            ng_change="vm.DepartItemsChange(vm.formData.DepartID)"
+                                        })
+                </td>
+                <td>
+                    <label>Department Name :</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartSN" />
+                </td>
+                <td>
+                    <label>Department Code :</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartCode" />
+                </td>
+
+            </tr>
+            <tr class="alert-success">
+                <td>
+                    <label>Accout:</label>
+                </td>
+                <td>
+                    <select kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="vm.UserAccountItems"
+                            ng-model="vm.formData.UserID"
+                            ng-disabled="!vm.formData.MasterID > 0 && !vm.formData.DepartID > 0"
+                            ng-change="vm.UserAccChange(vm.formData.UserID)"
+                            style="width:100%"></select>
+                </td>
+                <td>
+                    
+                </td>
+                <td>
+                    <select ng-model="vm.formData.UserID2"
+                            ng-options="items.Value as items.Text for items in vm.UserAccItemsAjs"
+                            ng-change="vm.UserAccChange(vm.formData.UserID2)"
+                            style="width:100%;height:100%;"
+                            class="k-dropdown-wrap"
+                            ></select>
+
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr class="alert-warning">
+                <td>
+                    <label>First Name :</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.FirstName" />
+                </td>
+                <td>
+                    <label>Last Name :</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.LastName" />
+                </td>
+                <td>
+                    <label>Employed :</label>
+                </td>
+                <td>
+                    <input type="checkbox" ng-model="vm.formData.Employed"/>
+                </td>
+            </tr>
+            <tr class="alert-info">
+                <td><label>Gender:</label></td>
+                <td>
+                    <label>
+                        <input type="radio" ng-model="vm.formData.Gender" value="1"/>Male
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="vm.formData.Gender" value="2"/>Female
+                    </label>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <hr />
+            <div class="console"></div>
+    </div>
+</div>
+
+
+

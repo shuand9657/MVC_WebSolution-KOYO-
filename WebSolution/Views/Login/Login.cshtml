@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNet.Identity
+@model DBModelClass.DBModel.CultureViewModel
+@{
+    ViewBag.Title = "Login Form";
+    Layout = "~/Views/Shared/_LayoutNGKendo.cshtml";
+}
+
+<!DOCTYPE html>
+
+<script src="~/Scripts/Script/Common/authController.js"></script>
+
+<html>
+<body>
+    <form name="LoginForm">
+        <div ng-app="MVCApp">
+            <div ng-controller="AuthCtrl as vm">
+                
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Label("Confirm logout, " + User.Identity.GetUserName() + " ?")
+                    <input type="button" class="k-button btn-danger" ng-click="vm.Logout()" value="Logout" />
+                    <a href="~/Home/POProfile" class="k-button btn-success" >Cancel</a>
+                }
+                else
+                {
+                    <table >
+                        <tr>
+                            <td>Select Culture:</td>
+                            @*<td>
+                                @Html.DropDownListFor(x=>x.Name,(IEnumerable<SelectListItem>)ViewBag.LangSelectList, new {@class="kendo-drop-down-list"})
+                            </td>*@
+                            <td><select kendo-drop-down-list
+                                        ng-model="vm.loginData.keyCulture"
+                                        k-data-text-field="'Text'"
+                                        k-data-value-field="'Value'"
+                                        k-data-source="vm.KeyCultureSource"
+                                        style="width:100%;"
+                                        ></select></td>
+                        </tr>
+                        <tr>
+                            <td>Username :</td>
+                            <td><input class="k-textbox" placeholder="Username.." ng-model="vm.loginData.username" name="username" required /></td>
+                        </tr>
+                        <tr>
+                            <td>Password : </td>
+                            <td><input class="k-textbox" type="password" placeholder="Password.." ng-model="vm.loginData.password" name="password" required /></td>
+                            
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="checkbox" ng-model="vm.loginData.isPersistent" name="isPersistent" />Remember</td>
+                            <td><button type="button" class="k-button btn-success" ng-click="vm.Login()" ng-disabled="vm.clicked">Login</button> <input type="button" class="k-button btn-success" ng-click="vm.AuthLogin()" value="AuthLogin" ng-disabled="vm.clicked" /></td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+    </form>
+</body>
+</html>

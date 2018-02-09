@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Tree View";
+    Layout = "~/Views/Shared/_LayoutNGKendo.cshtml";
+}
+<script src="~/Scripts/Script/Controller/poProfileController.js"></script>
+<script src="~/Scripts/Script/Services/poProfileServices.js"></script>
+<script src="~/Scripts/Script/TreeView/ngTreeViewController.js"></script>
+<script src="~/Scripts/Script/TreeView/ngTreeViewService.js"></script>
+<script src="~/Scripts/Script/TreeView/direct/ngCompanyService.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/ngTreeViewStyle.css" />
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TreeView</title>
+</head>
+<body ng-app="MVCApp">
+    <div ng-controller="ngTreeViewCtrl as vm">
+        <div style="width:25%;float:left; " > 
+           <label>dynamic load</label>
+            <a  class="k-link ui-icon-link" ng-click="vm.abortRequest()">cancel request</a>
+            <div block-ui="vm.httpBlock" >
+                <div 
+                     kendo-tree-view="tree"
+                     k-options="vm.dynamicTreeOptions"
+                     k-on-change="selectedItem=dataItem">
+                    <span k-template>
+                        <a href="\#/tv/{{dataItem.ParentName}}/_read/{{dataItem.nodeID}}">{{dataItem.text}}</a>
+                    </span>
+                </div>
+            </div>
+            <hr />
+            
+            <div block-ui="vm.block2">
+                <a href="#/t1/Company/read/1">Company</a>
+            </div>
+            <hr />
+            <button class="btn btn-danger" ng-click="vm.toogleBlock2('vm.notExists')">Block!</button>
+            <button class="btn btn-warning" ng-click="vm.toogleBlock2('vm.preBlockState')">Block!</button>
+        </div>
+        <div style="width:75%;float:right;">
+            <div>
+                <div>
+                    <pre block-ui="vm.preBlockState">
+                        @*{{vm.dynamicTreeOptions | json}}*@
+                    </pre>
+                </div>
+                <table>
+                    <tr >
+                        <td block-ui="vm.httpBlock">
+                            <a href="#/tv/new/{{selectedItem.ParentName}}" class="k-button btn-danger">New</a>
+                            <a href="#/tv/{{selectedItem.ParentName}}/_edit/{{selectedItem.nodeID}}" class="k-button btn-info">Edit</a>
+                            <a href="#/tv/{{selectedItem.ParentName}}/_read/{{selectedItem.nodeID}}" class="k-button btn-success">Read</a>
+                            <kendo-button class="btn-danger" ng-click="">Save</kendo-button>
+                            <a href="#/tv/{{selectedItem.ParentName}}/Read" class="k-button btn-primary">Cancel</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <hr />
+                <div id="views" ng-view class="slide-animation"></div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+</body>
+</html>
+
+

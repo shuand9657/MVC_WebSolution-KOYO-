@@ -1,0 +1,71 @@
+﻿@model DBModelClass.DBModel.POEntity
+@{ 
+    //Layout = "~/Views/Shared/_LayoutNGKendo.cshtml";
+    Layout = null;
+}
+
+<script src="/Scripts/modernizr-2.6.2.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+@*<script src="~/Scripts/Script/Common/verifyModule.js"></script>
+    <script src="~/Scripts/Script/Common/verifyController.js"></script>
+    <script src="~/Scripts/Script/Common/verifyService.js"></script>*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<script src="~/Scripts/Script/Module/MVCModule.js"></script>
+<link href="~/Content/animations.css" rel="stylesheet" />
+<script src="~/Scripts/Script/Controller/poProfileController.js"></script>
+<script src="~/Scripts/Script/Services/poProfileServices.js"></script>
+<script src="~/Scripts/Script/Common/verifyController.js"></script>
+<script src="~/Scripts/Script/Common/verifyService.js"></script>
+<script src="~/Scripts/Script/Common/poValidationController.js"></script>
+
+<div ng-controller="poValidationCtrl as vm">
+    <form name="validateForm">
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.PONo):
+                        @Html.TextBoxFor(model => model.PONo, new { ng_model = "vm.PONo" })
+                        @Html.ValidationMessageFor(model => model.PONo)
+                    </td>
+                    <td>
+                        @Html.LabelFor(x => x.ProjectID):
+                        @Html.TextBoxFor(x => x.ProjectID, new { ng_model = "vm.projectID" })
+                        @Html.ValidationMessageFor(x => x.ProjectID)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.MasterID):
+                        @Html.TextBoxFor(model => model.MasterID, new { ng_model = "vm.masterID" })
+                        @Html.ValidationMessageFor(model => model.MasterID)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div><pre>@Html.ValidationSummary()</pre></div>
+                    </td>
+                    <td>
+                        <pre>{{vm.PONo}} {{vm.projectID}} {{vm.masterID}}</pre>
+                    </td>
+                </tr>
+                <tr validation-config="vm.formConfig">
+                    <td>
+                        <input type="text" name="pono" ng-model="vm.formValidat.PONo" ng-minlength="3" ng-maxlength="8" required />
+
+                    </td>
+                    <td>
+                        <pre>Error Message: {{ validateForm.pono.$error | json }}</pre>
+                        <div ng-messages="validateForm.pono.$error" style="color:maroon" role="alert">
+                            <div ng-message="required">You did not enter a field</div>
+                            <div ng-message="minlength">Your field is too short</div>
+                            <div ng-message="maxlength">Your field is too long</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        }
+    </form>
+</div>

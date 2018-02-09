@@ -1,0 +1,24 @@
+﻿@model DBModelClass.DBModel.CultureViewModel
+@{
+    ViewBag.Title = "CultureChange";
+    Layout = "~/Views/Shared/_LayoutNGKendo.cshtml";
+}
+
+<h2>CultureChange</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="navbar-left">
+        <div><b>@ViewBag.CookieCulture</b></div>
+        @Html.DisplayNameFor(model => model.Name):
+        @Html.DropDownListFor(x => x.Name, (IEnumerable<SelectListItem>)ViewBag.LangSelectList, new {@class="kendo-drop-down-list"
+                                  })<br />
+        <input type="submit"
+               class="k-button btn-danger"
+               value="Submit">
+    </div>
+
+}

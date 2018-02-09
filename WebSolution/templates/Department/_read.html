@@ -1,0 +1,50 @@
+﻿<script src="../../Scripts/Script/TreeView/direct/ngDepartController.js"></script>
+<div ng-controller="tvDepartmentProfileCtrl as vm">
+    <a  class="k-link ui-icon-link" ng-click="vm.abortRequest()">Cancel request</a>
+    <h3>Department Profile Reader</h3>
+    <hr />
+    <div >
+        <table block-ui="vm.blockNgView">
+            <tr>
+                <td>
+                    <label>Deparment ID:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartID" />
+                </td>
+                <td>
+                    <label>Department Show Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartSN" />
+                </td>
+                <td>
+                    <label>Department Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Department Code:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartCode" />
+                </td>
+                <td>
+                    <label>Memo :</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.Memo" />
+                </td>
+                <td>
+                    
+                </td>
+                <td>
+                  
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

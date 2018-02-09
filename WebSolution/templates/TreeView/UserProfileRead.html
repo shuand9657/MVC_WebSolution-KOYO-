@@ -1,0 +1,68 @@
+﻿<!--<script src="~/Scripts/Script/TreeView/direct/ngCompanyController.js"></script>-->
+<div>
+    <h3>User Profile Reader</h3>
+    <div>
+        <p>{{vm.message}}</p>
+        <table>
+            <tr>
+                <td>
+                    <a href="#/tv/{{selectedItem.ParentName}}/New" class="k-button btn-danger">New</a>
+                    <a href="#/tv/{{selectedItem.ParentName}}/Edit" class="k-button btn-info">Edit</a>
+                    <a href="#/tv/{{selectedItem.ParentName}}/Read" class="k-button btn-success">Read</a>
+                </td>
+                <td>
+                    <kendo-button class="btn-danger" ng-click="">Save</kendo-button>
+                    <a href="#/tv/{{selectedItem.ParentName}}/Read" class="k-button btn-primary">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr />
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label>User ID:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.UserID" />
+                </td>
+                <td>
+                    <label>First Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.FirstName" />
+                </td>
+                <td>
+                    <label>Last Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.LastName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>User's Role :</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.Role" />
+                </td>
+                <td>
+                    <label>Create Date:</label>
+                </td>
+                <td>
+                    <input kendo-date-picker
+                           k-format="'{0:yyyy-MM-dd}'"
+                           ng-model="vm.formData.CreateDate" />
+                </td>
+                <td>
+                    <label>Memo:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.Memo" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

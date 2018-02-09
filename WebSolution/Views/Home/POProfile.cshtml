@@ -1,0 +1,192 @@
+﻿@model DBModelClass.DBModel.POEntityViewModel
+@using NgVal
+@{
+    ViewBag.Title = "POProfile";
+    Layout = "~/Views/Shared/_LayoutNGKendo.cshtml";
+    Html.EnableClientValidation();
+}
+
+<script src="~/Scripts/MicrosoftAjax.js"></script>
+<script src="~/Scripts/MicrosoftMvcValidation.js"></script>
+<script src="~/Scripts/Script/Controller/poProfileController.js"></script>
+<script src="~/Scripts/Script/Services/poProfileServices.js"></script>
+<script src="~/Scripts/Script/Common/authController.js"></script>
+<script src="~/Scripts/Script/Common/poValidationController.js"></script>
+
+<title>Purchase Order Form</title>
+
+<html>
+    <body>
+        <h2>Purchase Order Form</h2>
+        <br />
+        <div ng-app="MVCApp" block-ui="main" ng-class="{blockui:blockUI_==true}">
+            <div ng-controller="poProfileCtrl as vm">
+                <div style="text-align:right"><kendo-button class="btn-link" ng-click="vm.LogoutClick()">Log out (byNgDialog)</kendo-button></div>
+                <div>
+                    <table>
+                        <tr>
+                            <td style="width:70%;">
+                                <a href="#/po/Add" class="k-button btn-danger">New</a>
+                                <a href="#/po/Edit" class="k-button btn-toolbar">Edit</a>
+                                <a href="#/po/Read" class="k-button btn-info">Read Only</a>
+                                <a href="#/po/Read" class="k-button btn-warning" ng-click="vm.SearchPOView()">Search</a>
+                                @*<a href="#/po/temp/read" class="k-link"></a>*@
+                            </td>
+                            @*<td style="width:30%;" align="right">
+                                <kendo-button class="btn-danger" ng-click="vm.savePOProfileAction()">Save</kendo-button>
+                                <a href="#/po/Read" class="k-button btn-primary">Cancel</a>
+                            </td>*@
+                        </tr>
+                    </table>
+
+                    @*<kendo-button class="btn-link" ng-click="SearchPOView()"><a href="#Read" class="k-button btn-warning">Search</a></kendo-button>*@
+                </div>
+                <hr />
+                <div ng-view class="slide-animation"></div>
+                <hr />
+                <div kendo-grid id="PODetailGrid" k-options="vm.PODetailGridOptions" k-editable="true" ng-hide="vm.DetailShow"></div>
+            </div>
+            @*</div>*@
+
+            <div ng-controller="poValidationCtrl as vm">
+                <form name="vm.validateForm" id="testForm" >
+                    @using (Html.BeginForm("POProfile", "Home", FormMethod.Post))
+                    {   
+                        <h3>angular material tooltip</h3>
+                        <table style="width:100%;" class="alert-success">
+                            <tr class="alert-info">
+                                <td> <tooltip-builder>*</tooltip-builder> </td>
+                                <td><button class="k-button btn-primary" kendo-tooltip ng-click="vm.validClick(vm.validateForm)" k-content="vm.formToolTipContent">Error Summary</button></td>
+                                <td></td>
+                                <td>
+                                    <span class="validation-summary-errors" tooltips tooltip-template="vm.errorTooltip.FormValid" @*ng-if="vm.showHint"*@ >*</span>
+                                    <button name="FormErrSummary" ng-click="vm.FormErrSummary(vm.validateForm)" id="FormErrSummary">angular tooltip</button>
+                                </td>
+                                <td></td>
+                                <td align="right">
+                                    <button class="k-button btn-danger" >
+                                        Error Message
+                                        <md-tooltip md-direction="left" ng-if="vm.validateForm.$invalid">
+                                            <ul>
+                                                <li ng-repeat="msg in vm.formToolTip">{{msg.message}}</li>
+                                            </ul>
+                                        </md-tooltip>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label tooltips tooltip-template="show message after lose field focus">ng-blur method:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.PONo):
+                                </td>
+                                <td>
+                                    <input type="text" class="k-textbox" name="PONoTt" ng-blur="vm.SetTooltip(vm.validateForm.PONoTt)" ng-model="vm.POTt" @Html.ValFor(x => x.PONo) placeholder="PO-..." />
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.PONoTt.Message}}" ng-show="vm.validateForm.PONoTt.$invalid">*</span>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(x => x.ProjectID):
+                                </td>
+                                <td>
+                                    <input type="text" class="k-textbox" name="ProjectIDTt" ng-blur="vm.SetTooltip(vm.validateForm.ProjectIDTt)" ng-model="vm.ProjectTt" @Html.ValFor(x => x.ProjectID) />
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.ProjectIDTt.Message}}" ng-show="vm.validateForm.ProjectIDTt.$invalid">*</span>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.MasterID):
+                                </td>
+                                <td>
+                                    <input type="text" class="k-textbox" name="MasterIDTt" ng-blur="vm.SetTooltip(vm.validateForm.MasterIDTt)" ng-model="vm.MasterTt" @Html.ValFor(x => x.MasterID) />
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.MasterIDTt.Message}}" ng-show="vm.validateForm.MasterIDTt.$invalid">*</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="alert-warning">
+                                    <label tooltips tooltip-template="show message on mouse over the hint">ng-mouseover method:</label>
+                                </td>
+                            </tr>
+                            <tr class="alert-warning">
+                                <td>@Html.LabelFor(x => x.PriceRange):</td>
+                                <td>
+                                    <input type="number" class="k-textbox" name="PriceRangeTt" ng-model="vm.priceRangeTt" @Html.ValFor(x => x.PriceRange) />
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.PriceRangeTt.Message}}" ng-mouseover="vm.SetTooltip(vm.validateForm.PriceRangeTt)" ng-show="vm.validateForm.PriceRangeTt.$invalid">*</span>
+                                </td>
+                                <td>@Html.LabelFor(x => x.Email):</td>
+                                <td>
+                                    <input type="email" class="k-textbox" name="emailTt" ng-model="vm.emailTt" @Html.ValFor(model => model.Email) />
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.emailTt.Message}}" ng-mouseover="vm.SetTooltip(vm.validateForm.emailTt)" ng-show="vm.validateForm.emailTt.$invalid">*</span>
+                                </td>
+                                <td>@Html.LabelFor(x => x.TermofUse) </td>
+                                <td>
+                                    <input type="checkbox" class="checkbox-inline" name="TermOfUse" ng-model="vm.termOfUse" @Html.ValFor(x => x.TermofUse) />
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.TermOfUse.Message}}" ng-mouseover="vm.SetTooltip(vm.validateForm.TermOfUse)" ng-show="vm.validateForm.TermOfUse.$invalid">*</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(x => x.CreateDate)</td>
+                                <td>
+                                    <input type="date" class="k-textbox" @Html.ValFor(x => x.CreateDate) name="angCreateDate" ng-model="vm.angCreateDate"  @*min="2016-03-01" max="2016-05-05"*@ />
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.angCreateDate.Message}}" ng-show="vm.validateForm.angCreateDate.$invalid" ng-mouseover="vm.SetTooltip(vm.validateForm.angCreateDate)">*</span>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(x=>x.GenderList)
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio"  name="gender" id="male" value="1" ng-model="vm.gender" @Html.ValFor(x=>x.GenderList) /> Male
+                                    </label>
+                                    <label>
+                                        <input type="radio"  name="gender" id="female" value="2" ng-model="vm.gender" @Html.ValFor(x=>x.GenderList) /> Female
+                                    </label>
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.gender.Message}}" ng-show="vm.validateForm.gender.$invalid" ng-mouseover="vm.SetTooltip(vm.validateForm.gender)">*</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(x=>x.MasterList) </td>
+                                <td>
+                                    <input kendo-combo-box ng-model="vm.testMasterList" name="MasterItem" ng-blur="vm.SetTooltip(vm.validateForm.MasterItem)" @Html.ValFor(x => x.MasterList) />
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.MasterItem.Message}}" ng-show="vm.validateForm.MasterItem.$invalid">*</span>
+                                </td>
+                                <td>@Html.DropDownListFor(x => x.MasterList, Model.MasterList,"", new
+                               {
+                                   @class = "kendo-combo-box",
+                                   name="tMasterList",
+                                   ng_model = "vm.data.tMasterList",
+                                   ng_blur= "vm.SetTooltip(vm.validateForm.tMasterList)"
+                               }) 
+                                    <span class="validation-summary-errors" tooltips tooltip-template="{{vm.errorTooltip.tMasterList.Message}}" ng-show="vm.validateForm.tMasterList.$invalid">*</span>
+                                </td>
+                                <td>
+                                    <input type="date" class="k-textbox" @Html.ValFor(x => x.MonthRange) name="monthRange" ng-model="vm.monthRange"  />
+                                </td>
+                                <td>
+                                    <input type="date" class="k-textbox" @Html.ValFor(x => x.DayRange) name="dayRange" ng-model="vm.dayRange" />
+                                </td>
+                                <td>
+                                    <input type="date" class="k-textbox" @Html.ValFor(x => x.YearRange) name="yearRange" ng-model="vm.yearRange" />
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        
+                        <hr />
+                        <p ng-repeat="msg in vm.formToolTip">{{msg.message}}</p>
+                        @*
+                        <pre>{{vm.formToolTip | json}} </pre>
+                        
+                        <pre>
+                            {{vm.validateForm|json}}
+                        </pre>*@
+
+
+                    }
+                    </form>
+                </div>
+        </div>
+    </body>
+</html>

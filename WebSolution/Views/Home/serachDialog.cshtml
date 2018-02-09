@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="ngdialog-message">
+    <table class="table" style="width:100%;">
+        <tr>
+            <td style="width:33.3%;">
+                @Html.Label("Master Name : ")
+                <select kendo-drop-down-list
+                        k-data-text-field="'Text'"
+                        k-data-value-field="'Value'"
+                        ng-model="formData.MasterID"
+                        k-data-source="MasterItems"
+                        k-on-change="MasterItemsChange()"
+                        @*k-options="vm.CascadeMasterItems"
+                            k-option-label="'Select Master Name..'"
+                            id="k-MasterNames"*@
+                        style="width:100%;"></select>
+            </td>
+            <td style="width:33.4%;">
+                @Html.Label("Project Name : ")
+                <select kendo-drop-down-list
+                        k-data-text-field="'Text'"
+                        k-data-value-field="'Value'"
+                        ng-model="formData.ProjectID"
+                        k-data-source="ProjectItems"
+                        k-on-change="ProjectItemsChange()"
+                        @*k-options="vm.CascadeProjectItems"
+                            k-option-label="'Select Master..'"
+                            id="k-ProjectNames"*@
+                        style="width:100%;"></select>
+            </td>
+            <td style="width:33.3%;">
+                @Html.Label("Purchase Order No: ")<br />
+                <input class="k-textbox" ng-model="formData.PONo" type="text" style="width:100%;" placeholder="PO No here.." />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <kendo-button class="btn-warning" ng-click="SearchPONoClick()">Search</kendo-button>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <form>
+        <div kendo-grid="grid" k-options="POMainGridOptions" id="POKendoGrid">
+            <div k-detail-template>
+                    <div kendo-grid k-options="PODetailGridOptions" id="PODetailGrid" ></div>
+                </div>
+        </div>
+    </form>
+</div>

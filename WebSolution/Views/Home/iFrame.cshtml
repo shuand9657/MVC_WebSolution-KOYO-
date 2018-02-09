@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "iFrame";
+    //Layout = "~/Views/Shared/_LayoutNGKendo.cshtml";
+    Layout = null;
+}
+
+@Styles.Render("~/Content/KendoStyle")
+@Styles.Render("~/Content/themes/base/css")
+@Styles.Render("~/Content/ngStyle")
+@Styles.Render("~/Content/css")
+<link rel="stylesheet" href="~/Content/angular-block-ui.css">
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/Content/jqScriptBundle")
+<script src="/Scripts/modernizr-2.6.2.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+@*<script src="~/Scripts/Script/Common/verifyModule.js"></script>
+    <script src="~/Scripts/Script/Common/verifyController.js"></script>
+    <script src="~/Scripts/Script/Common/verifyService.js"></script>*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+@*<script src="~/Scripts/Script/Module/MVCModule.js"></script>
+<script src="~/Scripts/Script/Controller/poProfileController.js"></script>
+<script src="~/Scripts/Script/Services/poProfileServices.js"></script>
+<script src="~/Scripts/Script/TreeView/ngTreeViewController.js"></script>
+<script src="~/Scripts/Script/TreeView/ngTreeViewService.js"></script>
+<script src="~/Scripts/Script/TreeView/sub/tvTreeModule.js"></script>*@
+
+<script src="~/Scripts/require.js" data-main="/Scripts/Script/Common/mainJS"></script>
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/ngTreeViewStyle.css" />
+
+<html>
+<body>
+
+    <h2>iFrame</h2>
+
+    <div @*ng-app="MVCApp"*@ ng-controller="ngTreeViewCtrl as vm">
+        <hr />
+
+        <div class="container">
+            <div class="row">
+                <div id="left-Pannel-nav" class="col-sm-3 col-md-2 " ng-include="'../templates/frame/leftMenu.html'" ></div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>
+            </div>
+        </div>
+
+
+        <hr />
+        <div style="width:25%;float:left; ">
+            <label>dynamic load</label>
+            <div kendo-tree-view="tree"
+                 k-options="vm.dynamicTreeOptions"
+                 k-on-change="selectedItem=dataItem">
+                <span k-template>
+                    <a href="\#/tryDynamic1/{{dataItem.ParentName}}/read/{{dataItem.nodeID}}">{{dataItem.text}}</a>
+                </span>
+            </div>
+
+        </div>
+
+        <div style="width:75%;float:right;">
+            <div ng-view></div>
+            <hr />
+            
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+</body>
+</html>
+
+

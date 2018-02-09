@@ -1,0 +1,210 @@
+﻿
+.k-treeview .k-sprite{
+              background-image:url("/Content/kendo/Default/sprite.png");
+              background-repeat:no-repeat;
+              display:inline-block;
+              overflow:hidden;
+              padding:0;
+              margin:0;
+              width:16px;
+              height:16px;
+         }
+          .root{
+              background-position: -33px -274px;
+          }
+          .depart{
+              background-position: -65px -240px;
+          }
+          .user{
+              background-position: -33px -242px;
+          }
+
+.checkbox-inline input[type="checkbox"].ng-invalid {
+  float: left;
+  margin-left: -20px;
+  border: 1px red;
+}
+.checkbox-inline input[type="checkbox"].ng-valid {
+  float: left;
+  margin-left: -20px;
+  border: 1px green;
+}
+
+.field-validation-error {
+    font-weight:bold;
+    /*background-image: url("icon/error.png");
+    padding-left:16px;*/
+    background-repeat: no-repeat;
+    color:darkred;
+    background-size:16px 16px;
+}
+ .k-widget.k-dropdown.ng-invalid{
+     border: 1px solid red;
+ }
+ .k-widget.k-dropdown.ng-valid{
+     border: 1px solid green;
+ }
+.validation-summary-errors {
+    font-weight:bold;
+    color:darkmagenta;
+    
+}
+
+.k-widget.ng-invalid {
+    border-color:red;
+    
+}
+.k-header.ng-invalid{
+    color: red;
+    border-color: red;
+}
+
+      .k-header.ng-valid {
+        color: green;
+      }
+      .k-header.k-invalid {
+        border: red;
+      }
+
+input.ng-invalid{
+   background-color:  #fcf8e3;
+   border-color: red ;
+}
+
+input.ng-valid{
+   border-color: green; 
+}
+
+input.ng-invalid.ng-dirty {
+    /*background-color: red;*/
+   background-color:  #fcf8e3;
+   border-color: red ;
+  }
+  input.ng-valid.ng-dirty {
+    border-color: green ;
+    /*background-color: green;*/
+  }
+
+.k-widget.ng-invalid.ng-dirty {
+    /*background-color: red;*/
+   background-color:  #fcf8e3;
+   border-color: red;
+  }
+.k-widget.ng-valid.ng-dirty {
+    border-color: green;
+    /*background-color: green;*/
+  }
+.k-widget.ng-valid{
+     border-color: green ; 
+}
+.validated {
+    border-color: #DCE4EC;
+}
+        
+.tip {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #808080;
+    border-radius: 16px;
+    box-shadow: 0 1px 10px rgba(32, 32, 32, 0.5);
+    color: red;
+    display: none;
+    font-size: 12px;
+    font-style: normal;
+    margin-left: 10px;
+    margin-top: -24px;
+    padding: 4px;
+    position: absolute;
+    z-index: 999999;
+}
+
+.tip_trigger {
+    float: right;
+    
+    color: darkred;
+    margin-left:4px
+}
+
+/*.k-widget .k-tooltip .k-tooltip-validation .k-invalid-msg{
+    display: none;
+}*/
+
+        .k-widget.k-tooltip-validation {
+            display:none !important;
+            visibility:hidden;
+            font-size:0px;
+            text-align: left;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: none;
+            box-shadow: none;
+            color: red;
+        }
+    
+        .k-tooltip-validation .k-warning {
+            display: none;
+        }
+
+.tt-multiline md-tooltip .md-content{
+    height:auto;
+    font-size:16px;
+}
+
+/*console*/
+
+.console {
+  position: relative;
+  background-color: transparent;
+  border-top: 1px solid #dfe0e1;
+  color: #333;
+  min-height: 15em;
+  height: auto;
+  margin: 2em 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.console .count {
+  background-color: #26c6da;
+  box-sizing: border-box;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  color: #FFFFFF;
+  font-size: .7em;
+  font-weight: bold;
+  margin-left: 1em;
+  padding: 4px 8px;
+}
+
+.console div {
+  background-position: 6px -95px;
+  border-bottom: 1px solid #f8fafb;
+  padding: 0;
+  line-height: 2.5;
+  min-height: 2.5em;
+  color: #333;
+  vertical-align: middle;
+  text-indent: 1em;
+}
+
+.console .error {
+  background-position: 6px -135px;
+}
+
+.km-root .km-android .console .count {
+  background-color: #f00;
+  background-clip: border-box;
+  font-weight: bold;
+}
+
+.km-root .km-wp .console .count {
+  font-size: 1em;
+}
+
+.demo-section .console {
+  width: 300px;
+  margin: 0;
+}

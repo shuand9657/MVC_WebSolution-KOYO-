@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+}
+@*<script src="~/Scripts/Script/Module/MVCModule.js"></script>
+<script src="~/Scripts/Script/Controller/poProfileController.js"></script>
+<script src="~/Scripts/Script/Services/poprofileServices.js"></script>*@
+
+<div ng-app="MVCApp">
+<div ng-controller="poProfileCtrl as vm">
+    <div class="ngdialog-message">
+        <table class="table" style="width:100%;">
+            <tr>
+                <td style="width:33.3%;">
+                    @Html.Label("Master Name : ")
+                    <select kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            ng-model="vm.formData.MasterID"
+                            k-data-source="vm.MasterItems"
+                            k-on-change="vm.MasterItemsChange()"
+                            @*k-options="vm.CascadeMasterItems"
+                            k-option-label="'Select Master Name..'"
+                            id="k-MasterNames"*@
+                            style="width:100%;"></select>
+                </td>
+                <td style="width:33.4%;">
+                    @Html.Label("Project Name : ")
+                    <select kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            ng-model="vm.formData.ProjectID"
+                            k-data-source="vm.ProjectItems"
+                            k-on-change="vm.ProjectItemsChange()"
+                            @*k-options="vm.CascadeProjectItems"
+                            k-option-label="'Select Master..'"
+                            id="k-ProjectNames"*@
+                            style="width:100%;"></select>
+                </td>
+                <td style="width:33.3%;">
+                    @Html.Label("Purchase Order No: ")<br />
+                    <input class="k-textbox" ng-model="vm.formData.PONo" type="text" style="width:100%;" placeholder="PO No here.." />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <kendo-button class="btn-warning" ng-click="vm.SearchPONoClick()">Search</kendo-button>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <form>
+            <div kendo-grid="grid" k-options="vm.POMainGridOptions" id="POKendoGrid">
+                @*<div k-detail-template>
+                    <div kendo-grid k-options="vm.PODetailGridOptions" id="PODetailGrid"></div>
+                </div>*@
+            </div>
+        </form>
+    </div>
+</div>
+</div>

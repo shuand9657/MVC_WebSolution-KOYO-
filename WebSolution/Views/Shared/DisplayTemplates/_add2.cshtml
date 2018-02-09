@@ -1,0 +1,98 @@
+﻿
+<div ng-controller="poAddProfileCtrl as vm">
+    <h4>New Purchase Order : NONONONO</h4>
+    <table class="table-bordered" style="width:100%">
+        <tr class=" alert-success">
+            <td style="width:9%;">
+                @Html.Label("Master Name : ")
+            </td>
+            <td style="width:22%;">
+                <select kendo-drop-down-list
+                        k-data-text-field="'Text'"
+                        k-data-value-field="'Value'"
+                        k-data-source="vm.MasterItems"
+                        @*k-option-label="'Select Master Name..'"
+                        k-options="vm.CascadeMasterItems"
+                        id="k-MasterNames"*@
+                        ng-model="vm.formData.MasterID"
+                        k-on-change="vm.MasterItemsChange(vm.formData.MasterID)"
+                        style="width:100%;"></select>
+            </td>
+            <td style="width:10%;">
+                @Html.Label("Project Name : ")
+            </td>
+            <td style="width:23%;">
+                <select kendo-drop-down-list
+                        k-data-text-field="'Text'"
+                        k-data-value-field="'Value'"
+                        @*k-option-label="'Select Master..'"
+                        id="k-ProjectNames"
+                        k-options="vm.CascadeProjectItems"*@
+                        k-on-change="vm.ProjectItemsChange(vm.formData.ProjectID)"
+                        k-data-source="vm.ProjectItems"
+                        ng-model="vm.formData.ProjectID"
+                        style="width:100%;"></select>
+            </td>
+            <td style="width:12%;">
+                @Html.Label("Purchase Order No : ")
+            </td>
+            <td style="width:23%;">
+                <input class="k-textbox" style="width:100%" ng-model="vm.formData.PONo" />
+            </td>
+        </tr>
+        <tr class="alert-info">
+            <td>
+                @Html.Label("Supplier Name : ")
+            </td>
+            <td>
+                <select kendo-drop-down-list
+                        k-data-text-field="'Text'"
+                        k-data-value-field="'Value'"
+                        @*k-option-label="'Select Project Name..'"
+                        k-options="vm.CascadeSupplierItems"
+                        id="k-SupplierNames"*@
+                        k-data-source="vm.SupplierItems"
+                        ng-model="vm.formData.SupplierID"
+                        style="width:100%;"></select>
+            </td>
+            <td>
+                @Html.Label("Create Date : ")
+            </td>
+            <td>
+                <input kendo-date-picker
+                       ng-model="vm.formData.CreateDate"
+                       k-ng-model="vm.today"
+                       k-format="'{0:yyyy-MM-dd}'"
+                       id="CreateDateID"
+                       style="width:100%;" />
+            </td>
+            <td>
+                @Html.Label("Update Date : ")
+            </td>
+            <td>
+                <input kendo-date-picker
+                       ng-model="vm.formData.UpdateDate"
+                       @*k-ng-model="vm.today"*@
+                       k-format="'{0:yyyy-MM-dd}'"
+                       id="UpdateDateID"
+                       style="width:100%;" />
+            </td>
+        </tr>
+        <tr class="alert-success">
+            <td>@Html.Label("Memo : ")</td>
+            <td><input class="k-textbox text-left" ng-model="vm.formData.Memo" style="width:100%" /></td>
+            <td>@Html.Label("Transaction Date : ")</td>
+            <td>
+                <input kendo-date-picker
+                       ng-model="vm.formData.TranDate"
+                       k-format="'{0:yyyy-MM-dd}'"
+                       style="width:100%;" />
+            </td>
+            <td></td>
+            <td>
+                <kendo-button class="btn-danger" ng-click="vm.savePOProfileAction()">Save</kendo-button>
+                <a href="#Read" class="k-button btn-primary">Cancel</a>
+            </td>
+        </tr>
+    </table>
+</div>

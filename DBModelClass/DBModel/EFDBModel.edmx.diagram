@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b752fe16e3e2454da9a2a392e117e644" Name="Diagram1">
+        <EntityTypeShape EntityType="EFDBModel.Account" Width="1.5" PointX="0.875" PointY="0.625" />
+        <EntityTypeShape EntityType="EFDBModel.OrgMaster" Width="1.5" PointX="2.5" PointY="2.625" />
+        <EntityTypeShape EntityType="EFDBModel.PartsMaster" Width="1.5" PointX="4.375" PointY="0.625" />
+        <EntityTypeShape EntityType="EFDBModel.PODetail" Width="1.5" PointX="4.375" PointY="2.625" />
+        <EntityTypeShape EntityType="EFDBModel.POEntity" Width="1.5" PointX="6" PointY="0.625" />
+        <EntityTypeShape EntityType="EFDBModel.Project" Width="1.5" PointX="0.875" PointY="4.375" />
+        <EntityTypeShape EntityType="EFDBModel.ProjectOrg" Width="1.5" PointX="7.625" PointY="2.75" />
+        <EntityTypeShape EntityType="EFDBModel.PODetail_View" Width="1.5" PointX="4.375" PointY="5.125" />
+        <EntityTypeShape EntityType="EFDBModel.POEntity_View" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="EFDBModel.ProjectOrg_View" Width="1.5" PointX="7.625" PointY="0.625" />
+        <EntityTypeShape EntityType="EFDBModel.Users" Width="1.5" PointX="7.625" PointY="4.5" />
+        <EntityTypeShape EntityType="EFDBModel.UserDepartment_View" Width="1.5" PointX="9.25" PointY="2.75" />
+        <EntityTypeShape EntityType="EFDBModel.Department" Width="1.5" PointX="2.625" PointY="0.625" />
+        <EntityTypeShape EntityType="EFDBModel.Gender" Width="1.5" PointX="0.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

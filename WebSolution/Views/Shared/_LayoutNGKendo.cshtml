@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "_LayoutNGKendo";
+}
+<!DOCTYPE html>
+<!--Script Go here-->
+@Styles.Render("~/Content/KendoStyle")
+@Styles.Render("~/Content/themes/base/css")
+@Styles.Render("~/Content/ngStyle")
+@Styles.Render("~/Content/css")
+<link rel="stylesheet" href="~/Content/angular-block-ui.css">
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/Content/jqScriptBundle")
+<script src="/Scripts/modernizr-2.6.2.js"></script>
+
+<!--Scripts End-->
+<script src="~/Scripts/ScriptJS.js"></script>
+<script src="~/Scripts/Script/Module/MVCModule.js"></script>
+<script src="~/Scripts/Script/Services/httpService.js"></script>
+<script src="~/Scripts/Script/Services/validationMessageService.js"></script>
+<script src="~/Scripts/Script/Services/VariableService.js"></script>
+<script src="~/Scripts/Script/Services/blockUIService.js"></script>
+<script src="~/Scripts/Script/Services/UserProfileService.js"></script>
+<script src="~/Scripts/ngval.js"></script>
+<script src="~/Scripts/ngValKoyo.js"></script>
+<script src="~/Scripts/TooltipBuilder.js"></script>
+<script src="~/Scripts/Script/TreeView/ngTreeViewModule.js"></script>
+<script src="~/Scripts/Script/Services/TooltipService.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/ngTreeViewStyle.css" />
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+</head>
+<body >
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                    <li>@Html.ActionLink("PO Profile", "POProfile", "Home")</li>
+                    <li>@Html.ActionLink("Tree View", "TreeView", "Home")</li>
+
+                    @*<li>@Html.ActionLink("dynamic try", "iFrame", "Home")</li>*@
+                </ul>
+            </div>
+            <div >
+                @if (Request.IsAuthenticated)
+                {
+
+                    using (Html.BeginForm("Login", "Login", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "POProfile", "Home", routeValues: null, htmlAttributes: new { title = "PO Profile" })
+                            </li>
+                            <li>@Html.ActionLink("Logout", "Login", "Login")</li>
+                        </ul>
+                    }
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Log in", "Login", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                    </ul>
+                }
+                @using System.Threading;
+                @{
+                    CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink("Culture Change", "CultureChange", "Home")
+                        </li>
+                    </ul>
+                }
+            </div>
+
+        </div>
+    </div>
+
+            <div class="container body-content">
+                <hr />
+                @RenderBody()
+                <hr />
+            </div>
+</body>
+</html>
+
+@*<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>*@

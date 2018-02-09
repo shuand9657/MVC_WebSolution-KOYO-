@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "angular test page";
+    Layout = "~/Views/Shared/_LayoutNGKendo.cshtml";
+}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+<link href="~/Content/angular-material.css" rel="stylesheet" />
+<link href="~/Content/angular-material.layouts.css" rel="stylesheet" />
+<script src="~/TestScript/DemoModule.js"></script>
+<script src="~/TestScript/DemoService.js"></script>
+<script src="~/TestScript/DemoController.js"></script>
+<h2>test test test</h2>
+<div ng-app="DemoApp">
+    <div >
+        <div style="width:45%; float:left;">
+            
+            <h2>bootstrap</h2>
+            <hr />
+            <h3>Tab</h3>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Tab One</a></li>
+                <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Tab Two</a></li>
+                <li role="presentation"><a href="#tab3" role="tab" data-toggle="tab">Tab Three</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="tab1">
+                    <p>First tab's content.</p>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab2">
+                    <p>Second tab's content.</p>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tab3">
+                    <p>Third tab's content.</p>
+                </div>
+            </div>
+            <hr />
+            <h3>Input</h3>
+            <form>
+                <div class="form-group">
+                    <label>Username :</label>
+                    <input type="text" placeholder="Username" class="form-control" id="input_Username" ng-model="vm.bs.Username"/>
+                    <br />
+                    <label>Password :</label>
+                    <input type="password" placeholder="Password" class="form-control" id="input_passwrord" ng-model="vm.bs.Password" style="width:50%;"/>
+                    <br />
+                </div>
+            </form>
+            <hr />
+            <h3>button</h3>
+
+
+        </div>
+
+
+
+        <div style="width:45%; float:right;">
+            
+            <h2>angular material</h2>
+            <hr />
+            <h3>Tab</h3>
+            <div ng-controller="DemoCtrl as vm">
+                <md-content class="md-padding">
+                    <md-tabs md-dynamic-height md-border-bottom md-selected="vm.md.selectedIndex" md-align-tabs="{{vm.md.bottom? 'bottom' : 'top'}}">
+                        <md-tab id="tab1">
+                            <md-tab-label>Items One</md-tab-label>
+                            <md-tab-body>
+                                This is View of Tab #1<br />
+                                data.selectedIndex (tab index) = {{vm.md.selectedIndex}}
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab id="tab2">
+                            <md-tab-label>{{vm.md.secondLabel}}</md-tab-label>
+                            <md-tab-body>
+                                this is the view of Tab no. 2.<br />
+                                <pre>
+                                    {{vm.md.longContent}}
+                                </pre>
+                                tab index : {{vm.md.selectedIndex}}
+                            </md-tab-body>
+                        </md-tab>
+                        <md-tab id="tab3">
+                            <md-tab-label>this is Item three</md-tab-label>
+                            <md-tab-body>
+                                this is the view of Tab # three! <br />
+                                tab index: {{vm.md.selectedIndex}}
+                            </md-tab-body>
+                        </md-tab>
+                    </md-tabs>
+                </md-content>
+            </div>
+            <hr />
+            <h3>input</h3>
+            <form>
+                <md-input-container class="md-block" flex-gt-mx>
+                    <label>Username :</label>
+                    <input ng-model="vm.md.Username" />
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-mx>
+                    <label>Password :</label>
+                    <input type="password" ng-model="vm.md.Password" style="width:50%" />
+                </md-input-container>
+                <div layout-gt-sm="row">
+                    <md-input-container md-no-float class="md-block" >
+                        <label>Leave a message</label>
+                        <input type="text" placeholder="Any word..." ng-model="vm.md.Message"/>
+                    </md-input-container>
+                    <md-input-container md-no-float class="md-block">
+                        <label>How is your day</label>
+                        <md-select ng-model="vm.selectedUser.id">
+                            <md-option ng-value="user.id" ng-repeat="user in vm.users">{{ user.name }}</md-option>
+                        </md-select>
+                        @*<md-select ng-model="vm.md.feel">
+                            <md-option ng-value="feel.Value" ng-repeat="feel in vm.FeelingOption">{{feel.Text}}</md-option>
+                        </md-select>*@
+                    </md-input-container>
+                </div>
+            </form>
+            <hr />
+
+        </div>
+        <div style="clear:both;"></div>
+
+    </div>
+</div>

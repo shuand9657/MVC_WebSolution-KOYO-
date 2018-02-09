@@ -1,0 +1,59 @@
+﻿
+
+
+<div ng-app="MVCApp">
+    <div ng-controller="tempNgPOCtrl as vm">
+        <div @*ng-if="read"*@>
+            <form novalidate>
+                <table style="width:100%">
+                    <tr>
+                        <td align="left">
+                            <h3>Purchase Order Detail : </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <md-button class="md-raised md-primary" ng-click="vm.doPOProfile()" ng-disabled>Save</md-button>
+                            <md-button class="md-raised" ng-disabled>Cancel</md-button>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td style="width:11%"><label >Master Name :</label></td>
+                        <td><input type="text" class="md-text" ng-model="vm.formData.MasterOrgSN" style="width:100%" ng-disabled /></td>
+                        <td style="width:11%">
+                            <label>Project Name :</label>
+                        </td>
+                        <td>
+                            <input type="text" class="md-text" ng-model="vm.formData.ProjectSN" style="width:100%" ng-disabled />
+                        </td>
+                        <td style="width:11%">
+                            <label>Purchase order No :</label>
+                        </td>
+                        <td>
+                            <input type="text" class="md-text" style="width:100%" ng-model="vm.formData.PONo" ng-disabled="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+

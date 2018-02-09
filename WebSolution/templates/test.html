@@ -1,0 +1,125 @@
+﻿<script type="text/javascript" src="../Scripts/Script/TreeView/ngTreeViewController.js"></script>
+<script type="text/javascript" src="../Scripts/Script/TreeView/ngTreeViewService.js"></script>
+
+<div  ng-if="vm.companyShow">
+    <h3>Company Profile Reader</h3>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label>Company ID:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.MasterID" />
+                </td>
+                <td>
+                    <label>Company Show Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.OrgSN" />
+                </td>
+                <td>
+                    <label>Company Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.OrgName" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div ng-if="vm.departShow">
+    <h3>Department Profile Reader</h3>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label>Deparment ID:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartID" />
+                </td>
+                <td>
+                    <label>Department Show Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartSN" />
+                </td>
+                <td>
+                    <label>Department Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Department Code:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartCode" />
+                </td>
+                <td>
+                    <label>Memo :</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.Memo" />
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div  ng-if="vm.userShow">
+    <h3>User Profile Reader</h3>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label>User ID:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.UserID" />
+                </td>
+                <td>
+                    <label>First Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.FirstName" />
+                </td>
+                <td>
+                    <label>Last Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.LastName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>User's Role :</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.Role" />
+                </td>
+                <td>
+                    <label>Create Date:</label>
+                </td>
+                <td>
+                    <input kendo-date-picker
+                           k-format="'{0:yyyy-MM-dd}'"
+                           ng-model="vm.formData.CreateDate" />
+                </td>
+                <td>
+                    <label>Memo:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.Memo" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,62 @@
+﻿<!--<script src="~/Scripts/Script/TreeView/direct/ngCompanyController.js"></script>-->
+<div>
+    <h3>Department Profile Reader asas</h3>
+    <div>
+        <p>{{vm.message}}</p>
+        <table>
+            <tr>
+                <td>
+                    <a href="#/tv/{{selectedItem.ParentName}}/New" class="k-button btn-danger">New</a>
+                    <a href="#/tv/{{selectedItem.ParentName}}/Edit" class="k-button btn-info">Edit</a>
+                    <a href="#/tv/{{selectedItem.ParentName}}/Read" class="k-button btn-success">Read</a>
+                </td>
+                <td>
+                    <kendo-button class="btn-danger" ng-click="">Save</kendo-button>
+                    <a href="#/tv/{{selectedItem.ParentName}}/Read" class="k-button btn-primary">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr />
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label>Deparment ID:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartID" />
+                </td>
+                <td>
+                    <label>Department Show Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartSN" />
+                </td>
+                <td>
+                    <label>Department Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Department Code:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.DepartCode" />
+                </td>
+                <td>
+                    <label>Memo :</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.Memo" />
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+

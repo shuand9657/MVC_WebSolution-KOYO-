@@ -1,0 +1,33 @@
+﻿<script src="../../Scripts/Script/TreeView/direct/ngCompanyController.js"></script>    
+<div ng-controller="tvCompanyProfileCtrl as vm">
+    <a class="k-link ui-icon-link" ng-click="vm.abortRequest()">Cancel request</a>
+        <h3>Company Profile Reader</h3>
+        <hr />
+        <div>
+            <table  block-ui="vm.blockNgView">
+                <tr>
+                    <td>
+                        <label>Company ID:</label>
+                    </td>
+                    <td>
+                        <input type="text" class="k-textbox" ng-model="vm.formData.MasterID" />
+                    </td>
+                    <td>
+                        <label>Company Show Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" class="k-textbox" ng-model="vm.formData.OrgSN" />
+                    </td>
+                    <td>
+                        <label>Company Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" class="k-textbox" ng-model="vm.formData.OrgName" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+

@@ -1,0 +1,46 @@
+﻿<!--<script src="~/Scripts/Script/TreeView/direct/ngCompanyController.js"></script>-->
+<div>
+    <h3>Company Profile Reader</h3>
+    <div>
+        <p>{{vm.message}}</p>
+        <table>
+            <tr>
+                <td>
+                    <a href="#/tv/{{selectedItem.ParentName}}/New" class="k-button btn-danger">New</a>
+                    <a href="#/tv/{{selectedItem.ParentName}}/Edit" class="k-button btn-info">Edit</a>
+                    <a href="#/tv/{{selectedItem.ParentName}}/Read" class="k-button btn-success">Read</a>
+                </td>
+                <td>
+                    <kendo-button class="btn-danger" ng-click="">Save</kendo-button>
+                    <a href="#/tv/{{selectedItem.ParentName}}/Read" class="k-button btn-primary">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr />
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label>Company ID:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.MasterID" />
+                </td>
+                <td>
+                    <label>Company Show Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.OrgSN" />
+                </td>
+                <td>
+                    <label>Company Name:</label>
+                </td>
+                <td>
+                    <input type="text" class="k-textbox" ng-model="vm.formData.OrgName" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

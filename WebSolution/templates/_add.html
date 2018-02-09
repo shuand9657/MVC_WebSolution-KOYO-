@@ -1,0 +1,102 @@
+﻿<div ng-controller="poAddProfileCtrl as vm">    
+    <table style="width:100%">
+        <tr>
+            <td><h4>New Purchase Order : </h4></td>
+            
+        </tr> 
+        <tr>
+            <td align="right">
+                <kendo-button class="btn-danger" ng-click="vm.savePOProfileAction()" ng-disabled="this.poAddForm.$invalid">Save</kendo-button>
+                <a href="#/po/Read" class="k-button btn-primary">Cancel</a>
+            </td>
+        </tr>
+    </table>
+    <form name="poAddForm">
+        <table class="table-bordered" style="width:100%">
+            <tr class=" alert-success">
+                <td style="width:9%;">
+                    Master Name :
+                </td>
+                <td style="width:22%;">
+                    <select kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="vm.MasterItems"
+                            ng-model="vm.formData.MasterID"
+                            k-on-change="vm.MasterItemsChange(vm.formData.MasterID)"
+                            style="width:100%;" required></select>
+                </td>
+                <td style="width:10%;">
+                    Project Name :
+                </td>
+                <td style="width:23%;">
+                    <select kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-on-change="vm.ProjectItemsChange(vm.formData.ProjectID)"
+                            k-data-source="vm.ProjectItems"
+                            ng-model="vm.formData.ProjectID"
+                            style="width:100%;" required></select>
+                </td>
+                <td style="width:12%;">
+                    Purchase Order No :
+                </td>
+                <td style="width:23%;">
+                    <input class="k-textbox" style="width:100%" ng-model="vm.formData.PONo" 
+                           name="AddPONo" required />
+                    <span ng-show="poAddForm.AddPONo.$touched && poAddForm.AddPONo.$invalid">Required PONo!</span>
+                </td>
+            </tr>
+            <tr class="alert-info">
+                <td>
+                    Supplier Name :
+                </td>
+                <td>
+                    <select kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="vm.SupplierItems"
+                            ng-model="vm.formData.SupplierID"
+                            style="width:100%;" required></select>
+                </td>
+                <td>
+                    Create Date :
+                </td>
+                <td>
+                    <input kendo-date-picker
+                           ng-model="vm.formData.CreateDate"
+                           k-ng-model="vm.today"
+                           k-format="'{0:yyyy-MM-dd}'"
+                           id="CreateDateID"
+                           style="width:100%;" required/>
+                </td>
+                <td>
+                    Update Date :
+                </td>
+                <td>
+                    <input kendo-date-picker
+                           ng-model="vm.formData.UpdateDate"
+                           k-format="'{0:yyyy-MM-dd}'"
+                           id="UpdateDateID"
+                           style="width:100%;" required/>
+                </td>
+            </tr>
+            <tr class="alert-success">
+                <td>Memo :</td>
+                <td><input class="k-textbox text-left" ng-model="vm.formData.Memo" style="width:100%" /></td>
+                <td>Transaction Date : </td>
+                <td>
+                    <input kendo-date-picker
+                           ng-model="vm.formData.TranDate"
+                           k-format="'{0:yyyy-MM-dd}'"
+                           style="width:100%;" />
+                </td>
+                <td></td>
+                <td>
+                    <!--<kendo-button class="btn-danger" ng-click="vm.savePOProfileAction()">Save</kendo-button>
+                    <a href="#Read" class="k-button btn-primary">Cancel</a>-->
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
